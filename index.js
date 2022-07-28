@@ -1,7 +1,7 @@
 const form = document.querySelector(".my-form");
 const addBook = document.querySelector(".add-btn");
 const booksContainer = document.querySelector(".my-books");
-const myLibrary = [];
+let myLibrary = [];
 
 
 // Show form when add button is clicked.
@@ -43,7 +43,9 @@ function renderBookCard (book){
 
     // Delete book Using the remove button;
     bookRemove.addEventListener("click", (e) => {
-        booksContainer.removeChild(e.target.parentNode);
+        let cardParent = e.target.parentNode
+        booksContainer.removeChild(cardParent);
+        myLibrary.splice(cardParent.id,1);
     });
 };
 
