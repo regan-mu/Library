@@ -63,10 +63,13 @@ function Book(title, author, pages, read) {
         `;
     }
 }
-
+const bk1 = new Book("To Kill a Mockingbird", "Harper Lee", 150, false);
+const bk2 = new Book("The Great Gatsby", "Scott Fitzgerald", 100, false);
+myLibrary.push(bk1, bk2);
 
 // Create a new book Object and append it to the library array
 function getBook() {
+    myLibrary.map(renderBookCard);
     form.addEventListener("submit", (e) => {
         e.preventDefault();
         let formInfo = e.target;
