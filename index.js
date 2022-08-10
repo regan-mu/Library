@@ -1,7 +1,28 @@
 const form = document.querySelector(".my-form");
 const addBook = document.querySelector(".add-btn");
 const booksContainer = document.querySelector(".my-books");
+const bookTitle = document.querySelector("#bk-title");
+const bookAuthor = document.querySelector("#bk-author");
+const bookPages = document.querySelector("#bk-pages");
 let myLibrary = [];
+
+// Form Validations
+const validator = inputField => {
+    inputField.addEventListener("input", () => {
+        inputField.setCustomValidity("");
+        inputField.checkValidity();
+    })
+
+    inputField.addEventListener("invalid", () =>{
+        if (inputField.value === "") {
+            inputField.setCustomValidity("This field cannot be empty!");
+        }
+    })
+}
+
+validator(bookTitle);
+validator(bookAuthor);
+validator(bookPages);
 
 
 // Show form when add button is clicked.
@@ -64,7 +85,7 @@ function Book(title, author, pages, read) {
     }
 }
 const bk1 = new Book("To Kill a Mockingbird", "Harper Lee", 150, false);
-const bk2 = new Book("The Great Gatsby", "Scott Fitzgerald", 100, false);
+const bk2 = new Book("The Great Gatsby", "Scott Fitzgerald", 100, true);
 myLibrary.push(bk1, bk2);
 
 // Create a new book Object and append it to the library array
